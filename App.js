@@ -11,7 +11,7 @@ import FoodDetails from './Screens/FoodDetails'
 import CheckoutSelectOffers from './Screens/CheckoutSelectOffers'
 import OrderReview from './Screens/OrderReview'
 import OrderTrackingScreen from './Screens/OrderTrackingScreen'
-// import Screen04 from './Screens/Screen04'
+import AuthScreen from './Screens/AuthScreen'
 // import Screen05 from './Screens/Screen05'
 const Stack = createNativeStackNavigator()
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Screen_01'
+        initialRouteName='AuthScreen'
         headerShow={false}
       >
         <Stack.Screen name="Screen_01" component={Screen_01}
@@ -47,6 +47,9 @@ export default function App() {
           options={{ headerShown: false }}
         ></Stack.Screen>
         <Stack.Screen name="OrderTrackingScreen" component={OrderTrackingScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen name="AuthScreen" component={AuthScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>
