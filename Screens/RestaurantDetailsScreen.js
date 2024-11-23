@@ -1,20 +1,108 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, Image, Text, FlatList, TouchableOpacity } from 'react-native';
-
-const RestaurantDetailsScreen = () => {
+import axios from 'axios';
+const RestaurantDetailsScreen = ({ route, navigation }) => {
+    const { restaurant } = route.params;
+    const [items, setItems] = useState([]);
     const infoItems = [
         { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/28be04b8f77cc6be4039e2b2ebcb22287d3f9afc9fa9e09a9da94d5bcce09952?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", text: "4.5 (289 reviews)" },
         { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/bfdd49c3fda2147f6a4db8a615f6aa507b0a048521ad1afc81d8e1d42454bbf0?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", text: "2 discount voucher for restaurant" },
         { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/da7efe2bf225eff6ee5d0913c21cb435a4d8454dba554ac65b996ab75f67127b?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", text: "Delivery on 20 mins" },
     ];
+    useEffect(() => {
+        axios.get(`http://localhost:3000/restaurantDetails/${restaurant._id}`)
+            .then(response => {
+                setItems(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching restaurant details:', error);
+            });
+    }, [restaurant._id]);
 
-    const menuItems = [
-        { image: "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", name: "Fried Chicken", rating: "4.5", reviews: "99", price: "15" },
-        { image: "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", name: "Chicken Salad", rating: "4.5", reviews: "99", price: "15" },
-        { image: "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", name: "Spicy Chicken", rating: "4.5", reviews: "99", price: "15" },
-        { image: "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63", name: "Fried Potatos", rating: "4.5", reviews: "99", price: "15" },
-    ];
-
+    // const items = [
+    //     {
+    //         id: '1',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Sauté Chicken Rice",
+    //         description: "Sauté chicken, Rice",
+    //         price: "$15",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         category: "For You"
+    //     },
+    //     {
+    //         id: '2',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Chicken Burger",
+    //         description: "Fried chicken, Cheese & Burger",
+    //         price: "$15",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         category: "For You"
+    //     },
+    //     {
+    //         id: '3',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Combo B",
+    //         description: "Fried Chicken, Chicken Rice & Salad",
+    //         price: "$25",
+    //         rating: "4.5",
+    //         reviews: "90",
+    //         category: "Combo"
+    //     },
+    //     {
+    //         id: '4',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Combo B",
+    //         description: "Fried Chicken (Small) & Potatos",
+    //         price: "$19",
+    //         rating: "4.6",
+    //         reviews: "75",
+    //         category: "Combo"
+    //     },
+    //     {
+    //         id: '5',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Fried Chicken",
+    //         description: "Fried chicken, Cheese & Burger",
+    //         price: "15",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         category: "Menu"
+    //     },
+    //     {
+    //         id: '6',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Chicken Salad",
+    //         description: "Chicken, Salad",
+    //         price: "15",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         category: "Menu"
+    //     },
+    //     {
+    //         id: '7',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Spicy Chicken",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         price: "15",
+    //         category: "Menu"
+    //     },
+    //     {
+    //         id: '8',
+    //         image: "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+    //         name: "Fried Potatos",
+    //         rating: "4.5",
+    //         reviews: "99",
+    //         price: "15",
+    //         category: "Menu"
+    //     },
+    //     // Thêm các mục khác nếu cần
+    // ];
+    const forYouItems = items.filter(item => item.category === "For You");
+    const comboItems = items.filter(item => item.category === "Combo");
+    const menuItems = items.filter(item => item.category === "Menu");
     const tabIcons = [
         "https://cdn.builder.io/api/v1/image/assets/TEMP/cef1ec3a-a1f4-4232-88d6-347f8aa85557?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
         "https://cdn.builder.io/api/v1/image/assets/TEMP/2bd1eb5e-1d58-44c7-b380-410b19bfb541?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
@@ -22,21 +110,71 @@ const RestaurantDetailsScreen = () => {
         "https://cdn.builder.io/api/v1/image/assets/TEMP/979d53f7-da5f-4767-8865-747062950107?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
         "https://cdn.builder.io/api/v1/image/assets/TEMP/7d5fa92d-d2fc-46be-9961-fcfb921e4896?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63"
     ];
+    const renderComboItem = ({ item }) => (
+        <TouchableOpacity onPress={() => handleItemPress(item)}>
+            <View style={styles.comboItem}>
+                <Image source={{ uri: item.image }} style={styles.comboImage} resizeMode="contain" />
+                <View style={styles.comboInfo}>
+                    <Text style={styles.comboName}>{item.name}</Text>
+                    <Text style={styles.comboDescription}>{item.description}</Text>
+                    <View style={styles.comboDetails}>
+                        <Text style={styles.comboPrice}>${item.price}</Text>
+                        <View style={styles.ratingContainer}>
+                            <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/92ff9b4fefe14ce6ac0e8b9be65c8d0782070a3cd9365ca51358d553d23db4b3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
+                            <Text style={styles.ratingText}>{item.rating} ({item.reviews})</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+    const renderItem = ({ item }) => (
+        <TouchableOpacity onPress={() => handleItemPress(item)}>
+            <View style={styles.menuItemLarge}>
+                <Image source={{ uri: item.image }} style={styles.menuItemLargeImage} resizeMode="contain" />
+                <View style={styles.menuItemLargeInfo}>
+                    <Text style={styles.menuItemLargeName}>{item.name}</Text>
+                    <Text style={styles.menuItemLargeDescription}>{item.description}</Text>
+                    <View style={styles.menuItemLargeDetails}>
+                        <Text style={styles.priceText}>{item.price}</Text>
+                        <View style={styles.ratingContainer}>
+                            <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/ce03554f63e59e69c56975d57ee9c2ac1049af1a0fae6ab65a9ea345bec40ad7?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
+                            <Text style={styles.ratingText}>{item.rating} ({item.reviews})</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+    const handleItemPress = (item) => {
+        navigation.navigate('FoodDetails', { item });
+    };
 
     return (
         <ScrollView style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <View style={styles.headerContainer1}>
+                    <Image
+                        source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b12fecf66736d8b0da1cd0923809c8065d2cf95512129d8f14139c0c71175eda?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }}
+                        style={styles.backButton}
+                        resizeMode="contain"
+                    />
+
+                </View>
+            </TouchableOpacity>
             <View style={styles.headerContainer}>
-                <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/60a81d0c88d7351434c126243467535a9a1302cf1193ab7e2dd5c7f35deda1f4?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.headerImage} resizeMode="contain" />
+                <Image source={{ uri: restaurant.image }} style={styles.headerImage} resizeMode="contain" />
                 <View style={styles.headerInfo}>
                     <View style={styles.tagContainer}>
-                        <View style={[styles.tag, { backgroundColor: 'rgba(17, 123, 52, 1)' }]}>
-                            <Text style={styles.tagText}>Deal $1</Text>
-                        </View>
-                        <View style={[styles.tag, { backgroundColor: 'rgba(255, 119, 0, 1)' }]}>
-                            <Text style={styles.tagText}>Near you</Text>
+                        <View style={styles.tagContainer}>
+                            {restaurant.tags.map((tag, index) => (
+                                <View key={index} style={[styles.tag, { backgroundColor: 'rgba(17, 123, 52, 1)' }]}>
+                                    <Text style={styles.tagText}>{tag}</Text>
+                                </View>
+                            ))}
                         </View>
                     </View>
-                    <Text style={styles.restaurantName}>Hana Chicken</Text>
+                    <Text style={styles.restaurantName}>{restaurant.name}</Text>
                     <View style={styles.detailsContainer}>
                         <View style={styles.detailItem}>
                             <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/85828dd50366238c81c911619dde04c5c91227ebd9b139b65574a21ac726ad65?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.detailIcon} resizeMode="contain" />
@@ -73,51 +211,31 @@ const RestaurantDetailsScreen = () => {
                     <FlatList
                         data={menuItems}
                         renderItem={({ item }) => (
-                            <View style={styles.menuItem}>
-                                <Image source={{ uri: item.image }} style={styles.menuItemImage} resizeMode="contain" />
-                                <Text style={styles.menuItemName}>{item.name}</Text>
-                                <View style={styles.menuItemDetails}>
-                                    <View style={styles.ratingContainer}>
-                                        <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/0e81237614b3c01b8169734092d82dc94af8a60662a9588b1bf2d53ce9430593?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
-                                        <Text style={styles.ratingText}>{item.rating} ({item.reviews})</Text>
+                            <TouchableOpacity onPress={() => handleItemPress(item)}>
+                                <View style={styles.menuItem}>
+                                    <Image source={{ uri: item.image }} style={styles.menuItemImage} resizeMode="contain" />
+                                    <Text style={styles.menuItemName}>{item.name}</Text>
+                                    <View style={styles.menuItemDetails}>
+                                        <View style={styles.ratingContainer}>
+                                            <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/0e81237614b3c01b8169734092d82dc94af8a60662a9588b1bf2d53ce9430593?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
+                                            <Text style={styles.ratingText}>{item.rating} ({item.reviews})</Text>
+                                        </View>
+                                        <Text style={styles.priceText}>${item.price}</Text>
                                     </View>
-                                    <Text style={styles.priceText}>${item.price}</Text>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                         keyExtractor={(item) => item.name}
-                        horizontal
+                        numColumns={2}
                         showsHorizontalScrollIndicator={false}
                     />
                     <Text style={styles.sectionTitle}>Menu</Text>
-                    <View style={styles.menuItemLarge}>
-                        <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.menuItemLargeImage} resizeMode="contain" />
-                        <View style={styles.menuItemLargeInfo}>
-                            <Text style={styles.menuItemLargeName}>Sauté Chicken Rice</Text>
-                            <Text style={styles.menuItemLargeDescription}>Sauté chicken, Rice</Text>
-                            <View style={styles.menuItemLargeDetails}>
-                                <Text style={styles.priceText}>$15</Text>
-                                <View style={styles.ratingContainer}>
-                                    <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/ce03554f63e59e69c56975d57ee9c2ac1049af1a0fae6ab65a9ea345bec40ad7?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
-                                    <Text style={styles.ratingText}>4.5 (99)</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.menuItemLarge}>
-                        <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.menuItemLargeImage} resizeMode="contain" />
-                        <View style={styles.menuItemLargeInfo}>
-                            <Text style={styles.menuItemLargeName}>Chicken Burger</Text>
-                            <Text style={styles.menuItemLargeDescription}>Fried chicken, Cheese & Burger</Text>
-                            <View style={styles.menuItemLargeDetails}>
-                                <Text style={styles.priceText}>$15</Text>
-                                <View style={styles.ratingContainer}>
-                                    <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/ce03554f63e59e69c56975d57ee9c2ac1049af1a0fae6ab65a9ea345bec40ad7?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
-                                    <Text style={styles.ratingText}>4.5 (99)</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
+                    <FlatList
+                        data={forYouItems}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                        contentContainerStyle={styles.menuList}
+                    />
                     <TouchableOpacity style={styles.seeAllButton}>
                         <Text style={styles.seeAllText}>See all</Text>
                     </TouchableOpacity>
@@ -155,34 +273,12 @@ const RestaurantDetailsScreen = () => {
                 </View>
                 <View style={styles.comboSection}>
                     <Text style={styles.sectionTitle}>Combo</Text>
-                    <View style={styles.comboItem}>
-                        <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.comboImage} resizeMode="contain" />
-                        <View style={styles.comboInfo}>
-                            <Text style={styles.comboName}>Combo B</Text>
-                            <Text style={styles.comboDescription}>Fried Chicken, Chicken Rice & Salad</Text>
-                            <View style={styles.comboDetails}>
-                                <Text style={styles.comboPrice}>$25</Text>
-                                <View style={styles.ratingContainer}>
-                                    <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/92ff9b4fefe14ce6ac0e8b9be65c8d0782070a3cd9365ca51358d553d23db4b3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
-                                    <Text style={styles.ratingText}>4.5 (90)</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.comboItem}>
-                        <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.comboImage} resizeMode="contain" />
-                        <View style={styles.comboInfo}>
-                            <Text style={styles.comboName}>Combo B</Text>
-                            <Text style={styles.comboDescription}>Fried Chicken (Small) & Potatos</Text>
-                            <View style={styles.comboDetails}>
-                                <Text style={styles.comboPrice}>$19</Text>
-                                <View style={styles.ratingContainer}>
-                                    <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/92ff9b4fefe14ce6ac0e8b9be65c8d0782070a3cd9365ca51358d553d23db4b3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.starIcon} resizeMode="contain" />
-                                    <Text style={styles.ratingText}>4.6 (75)</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
+                    <FlatList
+                        data={comboItems}
+                        renderItem={renderComboItem}
+                        keyExtractor={item => item.id}
+                        contentContainerStyle={styles.comboList}
+                    />
                 </View>
             </View>
             <View style={styles.tabBar}>
@@ -377,6 +473,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: 70,
         alignItems: 'center',
         marginTop: 16,
+    },
+    backButton: {
+        width: 44,
+        aspectRatio: 1,
+        borderRadius: 4,
+    },
+    headerContainer1: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 20,
     },
     seeAllText: {
         color: 'rgba(255, 119, 0, 1)',

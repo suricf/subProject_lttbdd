@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Image, Text, ScrollView, TouchableOpacity } from 'react-native';
-
-const OrderReview = () => {
-    const [orderItems, setOrderItems] = useState([
-        {
-            id: 1,
-            name: 'Fried Chicken',
-            size: 'L',
-            toppings: 'Corn, Cheese Cheddar',
-            spiciness: 'Hot',
-            price: 32,
-            quantity: 1,
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/913dd89588520eda796096051cfd0942e92b68e85d73b7b5b1db7d7659e6b204?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        },
-        {
-            id: 2,
-            name: 'Chicken Salad',
-            size: 'M',
-            sauce: 'Roasted Sesame',
-            spiciness: 'No',
-            price: 10,
-            quantity: 1,
-            image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/4ae507bc2affd1e1d3996f4cd2f708a956cbd0f0c54fbebe7a69062535e11705?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        },
-    ]);
-
-    const [subtotal, setSubtotal] = useState(42);
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from './AuthContext';
+const OrderReview = ({ navigation }) => {
+    const { user } = useContext(AuthContext);
+    // const [orderItems, setOrderItems] = useState([
+    //     {
+    //         id: 1,
+    //         name: 'Fried Chicken',
+    //         size: 'L',
+    //         toppings: 'Corn, Cheese Cheddar',
+    //         spiciness: 'Hot',
+    //         price: 32,
+    //         quantity: 1,
+    //         image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/913dd89588520eda796096051cfd0942e92b68e85d73b7b5b1db7d7659e6b204?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'Chicken Salad',
+    //         size: 'M',
+    //         sauce: 'Roasted Sesame',
+    //         spiciness: 'No',
+    //         price: 10,
+    //         quantity: 1,
+    //         image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/4ae507bc2affd1e1d3996f4cd2f708a956cbd0f0c54fbebe7a69062535e11705?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
+    //     },
+    // ]);
+    const [orderItems, setOrderItems] = useState([]);
+    const [subtotal, setSubtotal] = useState(0);
     const [deliveryFee, setDeliveryFee] = useState(2);
     const [promotion, setPromotion] = useState(3.2);
-
+    const [address, setAddress] = useState('');
     const updateQuantity = (id, increment) => {
         setOrderItems(prevItems =>
             prevItems.map(item =>
@@ -37,9 +39,36 @@ const OrderReview = () => {
                     : item
             )
         );
-        updateTotals();
-    };
 
+    };
+    useEffect(() => {
+        updateTotals();
+    }, [orderItems]);
+    useEffect(() => {
+        const fetchCart = async () => {
+            try {
+                const existingCart = await AsyncStorage.getItem('cart');
+                const cart = existingCart ? JSON.parse(existingCart) : [];
+                setOrderItems(cart);
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+            }
+        };
+        const fetchAddress = async () => {
+            try {
+                const temporaryAddress = await AsyncStorage.getItem('temporaryAddress');
+                if (temporaryAddress) {
+                    setAddress(temporaryAddress);
+                } else if (user.address && user.address.length > 0) {
+                    setAddress(user.address[0].text);
+                }
+            } catch (error) {
+                console.error('Error fetching address:', error);
+            }
+        };
+        fetchAddress();
+        fetchCart();
+    }, [user]);
     const updateTotals = () => {
         const newSubtotal = orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
         setSubtotal(newSubtotal);
@@ -78,7 +107,7 @@ const OrderReview = () => {
                         accessible={true}
                         accessibilityLabel="Location pin icon"
                     />
-                    <Text style={styles.addressText}>201 Katlian No.21 Street</Text>
+                    <Text style={styles.addressText}>{address}</Text>
                 </View>
                 <View style={styles.timeRow}>
                     <Image
@@ -93,12 +122,8 @@ const OrderReview = () => {
                 <Text style={styles.sectionTitle}>Order details</Text>
             </View>
             <View style={styles.actions}>
-                <TouchableOpacity
-                    accessible={true}
-                    accessibilityLabel="Change address"
-                    accessibilityHint="Opens the address change screen"
-                >
-                    <Text style={styles.actionText}>Change address</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('CheckoutSelectLocation')}>
+                    <Text style={styles.changeAddressText}>Change Address</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     accessible={true}

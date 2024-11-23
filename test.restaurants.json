@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  },
+  "name": "B'Fresh Coffee",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e294e21c63c09c94e5a86e2a449830fb78a99fd2c5e535857166a814eb8e9724?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "30 mins",
+  "rating": 4.5,
+  "tags": [
+    "Freeship",
+    "Near you"
+  ],
+  "recommend": true,
+  "category": "Drink"
+},
+{
+  "_id": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  },
+  "name": "Loran Seafood",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/588f617760d5e2de4d98dfe83f8df3b856aaad569750e2709a507914f9972f28?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "30 mins",
+  "rating": 4.3,
+  "tags": [
+    "Deal $1",
+    "Freeship"
+  ],
+  "recommend": false,
+  "category": "Seafood"
+},
+{
+  "_id": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  },
+  "name": "Hana Chicken",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/fb9b6e07e6837d194c6ab0708894f510228276e4daddf4645cc994e6ce2e81f0?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "15 mins",
+  "rating": 4.8,
+  "tags": [
+    "Freeship",
+    "Near you"
+  ],
+  "recommend": true,
+  "category": "Fast Food"
+},
+{
+  "_id": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  },
+  "name": "Bamsu Restaurant",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/1c3875169dd3f4c47909abaa9e009bf6889b5f8b30554c462068d6f9d813bf17?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "35 mins",
+  "rating": 4.1,
+  "tags": [
+    "Freeship"
+  ],
+  "recommend": false,
+  "category": "Salad"
+},
+{
+  "_id": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  },
+  "name": "Neighbor Milk",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/7708205ff52b43119863e590eeaffc01c2d3188dcbd5690a21d28573107a32f9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "35 mins",
+  "rating": 4.1,
+  "tags": [
+    "Freeship"
+  ],
+  "recommend": true,
+  "category": "Fast Food"
+},
+{
+  "_id": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  },
+  "name": "Laura Green",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e870013a61528cb9b4006011ad3b7dacb2801750364ec217b5c1ed21dee9b511?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "30 mins",
+  "rating": 4.2,
+  "tags": [
+    "Deal $1"
+  ],
+  "recommend": false,
+  "category": "Fast Food"
+},
+{
+  "_id": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  },
+  "name": "Little Milk",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0bc285ccf278abbb6772fd15ad02af7358d77ab1121613f900b6539002052062?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "15 mins",
+  "rating": 4.8,
+  "tags": [
+    "FREESHIP"
+  ],
+  "recommend": false,
+  "category": "Fast Food"
+},
+{
+  "_id": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  },
+  "name": "Pasta E “moize",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/3a2b178ab96d0ab59153238951eb07f340629c816b8e6cea10630566404a684d?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "time": "30 mins",
+  "rating": 4.5,
+  "tags": [
+    "Deal $1"
+  ],
+  "recommend": false,
+  "category": "Fast Food"
+}]

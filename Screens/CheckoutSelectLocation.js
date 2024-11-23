@@ -1,15 +1,57 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
-
-const CheckoutSelectLocation = () => {
+import React, { useState, useContext, useEffect } from 'react';
+import { View, StyleSheet, ImageBackground, Image, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { AuthContext } from './AuthContext';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const CheckoutSelectLocation = ({ navigation }) => {
     const [selectedOption, setSelectedOption] = useState(null);
-
+    const [address, setAddress] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
+    const { user, setUser } = useContext(AuthContext);
+    useEffect(() => {
+        if (selectedOption === 'Home' || selectedOption === 'Work') {
+            const userAddress = user.address ? user.address.find(addr => addr.type === selectedOption) : null;
+            if (userAddress) {
+                setAddress(userAddress.text);
+            }
+        }
+    }, [selectedOption, user.address]);
     const locationOptions = [
-        { label: 'Home', id: 'home' },
-        { label: 'Work', id: 'work' },
-        { label: 'Other', id: 'other' },
+        { label: 'Home', id: 'Home' },
+        { label: 'Work', id: 'Work' },
+        { label: 'Other', id: 'Other' },
     ];
-
+    const handleSaveAddress = async () => {
+        if (selectedOption === 'Other') {
+            const temporaryAddress = await AsyncStorage.getItem('temporaryAddress');
+            if (temporaryAddress) {
+                await AsyncStorage.removeItem('temporaryAddress'); // Xóa temporaryAddress cũ nếu tồn tại
+            }
+            await AsyncStorage.setItem('temporaryAddress', address);
+            navigation.goBack();
+            return;
+        }
+        try {
+            const updatedAddress = user.address ? [...user.address] : [];
+            const addressIndex = updatedAddress.findIndex(addr => addr.type === selectedOption);
+            if (addressIndex !== -1) {
+                updatedAddress[addressIndex].text = address;
+            } else {
+                updatedAddress.push({ type: selectedOption, text: address });
+            }
+            const updatedUser = { ...user, address: updatedAddress };
+            await axios.put(`http://localhost:3000/users/${user._id}`, updatedUser);
+            setUser(updatedUser);
+            const temporaryAddress = await AsyncStorage.getItem('temporaryAddress');
+            if (temporaryAddress) {
+                await AsyncStorage.removeItem('temporaryAddress'); // Xóa temporaryAddress cũ nếu tồn tại
+            }
+            await AsyncStorage.setItem('temporaryAddress', address);
+            navigation.goBack();
+        } catch (error) {
+            console.error('Error updating address:', error);
+        }
+    };
     const RadioButton = ({ label, selected, onSelect }) => (
         <TouchableOpacity onPress={onSelect} style={styles.radioContainer}>
             <View style={[styles.radio, selected && styles.radioSelected]} />
@@ -17,10 +59,20 @@ const CheckoutSelectLocation = () => {
         </TouchableOpacity>
     );
 
-    const LocationInput = ({ address, onEdit }) => (
+    const LocationInput = ({ address, onEdit, isEditing, setAddress }) => (
         <View style={styles.locationInputContainer}>
             <View style={styles.addressContainer}>
-                <Text style={styles.addressText}>{address}</Text>
+                {isEditing ? (
+                    <TextInput
+                        style={styles.addressText}
+                        value={address} // Liên kết state `address`
+                        onChangeText={(text) => setAddress(text)} // Cập nhật state khi nhập
+                        autoFocus
+                        onBlur={() => setIsEditing(false)}// Tắt chế độ chỉnh sửa khi mất focus
+                    />
+                ) : (
+                    <Text style={styles.addressText}> {address || 'Tap to enter address'} </Text>
+                )}
                 <TouchableOpacity onPress={onEdit}>
                     <Image
                         resizeMode="contain"
@@ -60,8 +112,10 @@ const CheckoutSelectLocation = () => {
             <View style={styles.contentContainer}>
                 <Text style={styles.title}>Select location</Text>
                 <LocationInput
-                    address="201 Katlian No.21 Street"
-                    onEdit={() => { }}
+                    address={address}
+                    onEdit={() => setIsEditing(true)}
+                    isEditing={isEditing}
+                    setAddress={setAddress}
                 />
                 <View style={styles.radioGroup}>
                     {locationOptions.map((option) => (
@@ -73,7 +127,7 @@ const CheckoutSelectLocation = () => {
                         />
                     ))}
                 </View>
-                <ConfirmButton onPress={() => { }} />
+                <ConfirmButton onPress={handleSaveAddress} />
             </View>
         </ScrollView>
     );
@@ -128,6 +182,7 @@ const styles = StyleSheet.create({
     },
     addressText: {
         flex: 1,
+        height: 30
     },
     editIcon: {
         width: 16,

@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "674070e69341bcac01853a47"
+  },
+  "username": "qa",
+  "email": "qa",
+  "password": "$2a$10$a7sqh6YlcJmXAAHZi.XmzuXzY8.Wan5hZqkW4vh5WQvjvoO1NKblG",
+  "avatar": "http://localhost:3000/uploads/default.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6740724b9341bcac01853a49"
+  },
+  "username": "quan",
+  "email": "quan",
+  "password": "$2a$10$55Tcvp3kttfKJiiqTwnl5.ynfI7YOB.fJrrRRfPmnmvdwsAty5GFe",
+  "avatar": "http://localhost:3000/uploads/default.png",
+  "__v": 0,
+  "address": [
+    {
+      "type": "Home",
+      "text": "NHie ga",
+      "_id": {
+        "$oid": "6741e73a53460ecbc984dfc0"
+      }
+    },
+    {
+      "type": "Work",
+      "text": "aa",
+      "_id": {
+        "$oid": "6741e73a53460ecbc984dfc1"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674073c19341bcac01853a4b"
+  },
+  "username": "quan1",
+  "email": "quan1",
+  "password": "$2a$10$aqx9QQD.pQ0PtmzTolW55.frPYHauuUFR2CZBAO1fE63UWE.zUTby",
+  "avatar": "http://localhost:3000/uploads/default.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6740796285fe34d4ab459b3d"
+  },
+  "username": "quan4",
+  "email": "quan4",
+  "password": "$2a$10$MY28XrU9AAFWhTQdA7f2fueGcHhiVRdfJBrRL3/1d/HjFIkOCUrS.",
+  "avatar": "http://localhost:3000/uploads/default.png",
+  "__v": 0
+}]

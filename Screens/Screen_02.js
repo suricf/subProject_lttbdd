@@ -1,32 +1,8 @@
-import { View, StyleSheet, Image, Text, ScrollView, image } from 'react-native';
-import React from 'react'
+import { View, StyleSheet, Image, Text, ScrollView, image, TouchableOpacity, Picker } from 'react-native';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 const tags = ['Sort by', 'Freeship', 'Favorite', 'Near you', 'Parner'];
-const restaurantData = [
-    {
-        name: "Hana Chicken",
-        description: "Fried Chicken",
-        time: "15 mins",
-        rating: "4.8",
-        tags: ["Freeship", "Near you"],
-        image: "https://cdn.builder.io/api/v1/image/assets/TEMP/fb9b6e07e6837d194c6ab0708894f510228276e4daddf4645cc994e6ce2e81f0?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63"
-    },
-    {
-        name: "Bamsu Restaurant",
-        description: "Chicken Salad, Sandwich & Desserts",
-        time: "35 mins",
-        rating: "4.1",
-        tags: ["Freeship"],
-        image: "https://cdn.builder.io/api/v1/image/assets/TEMP/1c3875169dd3f4c47909abaa9e009bf6889b5f8b30554c462068d6f9d813bf17?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63"
-    },
-    {
-        name: "Neighbor Milk",
-        description: "Dairy Drinks & Smoothies",
-        time: "35 mins",
-        rating: "4.1",
-        tags: ["Freeship"],
-        image: "https://cdn.builder.io/api/v1/image/assets/TEMP/7708205ff52b43119863e590eeaffc01c2d3188dcbd5690a21d28573107a32f9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63"
-    }
-];
+
 const tabIcons = [
     "https://cdn.builder.io/api/v1/image/assets/TEMP/285dab10-5953-46ff-ade1-b52a4ea23630?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/5fdca64b-400e-4259-afa7-4d0e15b766b1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
@@ -35,34 +11,127 @@ const tabIcons = [
     "https://cdn.builder.io/api/v1/image/assets/TEMP/7a977687-99a7-4f96-8220-3c62f3d47947?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63"
 ];
 
-const Screen_02 = ({ navigation }) => {
+const Screen_02 = ({ navigation, route }) => {
+    const { categoryName } = route.params;
+    const [restaurantData, setRestaurantData] = useState([]);
+    const [showAll, setShowAll] = useState(false);
+    const [sortOrder, setSortOrder] = useState('A-Z');
+    const [showSortDropdown, setShowSortDropdown] = useState(false);
+    const [selectedTags, setSelectedTags] = useState([]);
+    useEffect(() => {
+        fetchRestaurants();
+    }, [categoryName]);
+
+    const fetchRestaurants = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/restaurants/category/${encodeURIComponent(categoryName)}`);
+            setRestaurantData(response.data || []);
+        } catch (error) {
+            console.error('Error fetching restaurants:', error);
+        }
+    };
+
+    const displayedRestaurants = showAll ? restaurantData : restaurantData.slice(0, 3);
+
+    const toggleShowAll = () => {
+        setShowAll(!showAll);
+    };
+    const toggleSortDropdown = () => {
+        setShowSortDropdown(!showSortDropdown);
+    };
+
+    const handleSortChange = (value) => {
+        setSortOrder(value);
+        setShowSortDropdown(false);
+    };
+    const sortRestaurants = (restaurants) => {
+        return restaurants.sort((a, b) => {
+            if (sortOrder === 'A-Z') {
+                return a.name.localeCompare(b.name);
+            } else {
+                return b.name.localeCompare(a.name);
+            }
+        });
+    };
+    const handleTagPress = (tag) => {
+        setSelectedTags(prevTags => {
+            if (prevTags.includes(tag)) {
+                return prevTags.filter(t => t !== tag);
+            } else {
+                return [...prevTags, tag];
+            }
+        });
+    };
+    const filterRestaurantsByTags = (restaurants) => {
+        if (selectedTags.length === 0 || selectedTags.includes('Sort by')) {
+            return restaurants;
+        }
+        return restaurants.filter(restaurant => selectedTags.every(tag => restaurant.tags.includes(tag)));
+    };
+
+    const handleRestaurantPress = (restaurant) => {
+        navigation.navigate('RestaurantDetailsScreen', { restaurant });
+    };
+
+    const filteredRestaurants = filterRestaurantsByTags(displayedRestaurants);
+    const sortedRestaurants = sortRestaurants(filteredRestaurants);
     return (
         <ScrollView style={styles.container}>
 
-            <View style={styles.headerContainer}>
-                <Image
-                    source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b12fecf66736d8b0da1cd0923809c8065d2cf95512129d8f14139c0c71175eda?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }}
-                    style={styles.backButton}
-                    resizeMode="contain"
-                />
-                <Text style={styles.headerTitle}>Fast Food</Text>
-            </View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <View style={styles.headerContainer}>
+                    <Image
+                        source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b12fecf66736d8b0da1cd0923809c8065d2cf95512129d8f14139c0c71175eda?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }}
+                        style={styles.backButton}
+                        resizeMode="contain"
+                    />
+                    <Text style={styles.headerTitle}>{categoryName}</Text>
+                </View>
+            </TouchableOpacity>
             <View style={styles.filterContainer}>
                 {tags.map((tag, index) => (
-                    <View key={index} style={styles.tagContainer}>
-                        <Text style={styles.tagText}>{tag}</Text>
+                    <TouchableOpacity
+                        key={index}
+                        onPress={() => handleTagPress(tag)}
+                        style={[
+                            styles.tagContainer,
+                            selectedTags.includes(tag) && styles.selectedTagContainer, // Áp dụng màu nếu được chọn
+                        ]}
+                    >
+                        <Text
+                            style={[
+                                styles.tagText,
+                                selectedTags.includes(tag) && styles.selectedTagText, // Đổi màu chữ nếu được chọn
+                            ]}
+                        >
+                            {tag}
+                        </Text>
                         {tag === 'Sort by' && (
-                            <Image
-                                source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b12e83e80ec154b2b0bd520cf3f5aa632dc233d1cf3bffdf3f28a966514d6602?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }}
-                                style={styles.sortIcon}
-                                resizeMode="contain"
-                            />
+                            <TouchableOpacity onPress={toggleSortDropdown}>
+                                <Image
+                                    source={{
+                                        uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b12e83e80ec154b2b0bd520cf3f5aa632dc233d1cf3bffdf3f28a966514d6602?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+                                    }}
+                                    style={styles.sortIcon}
+                                    resizeMode="contain"
+                                />
+                            </TouchableOpacity>
                         )}
-                    </View>
+                    </TouchableOpacity>
                 ))}
+                {showSortDropdown && (
+                    <Picker
+                        selectedValue={sortOrder}
+                        onValueChange={handleSortChange}
+                        style={styles.picker}
+                    >
+                        <Picker.Item label="A-Z" value="A-Z" />
+                        <Picker.Item label="Z-A" value="Z-A" />
+                    </Picker>
+                )}
             </View>
-            {restaurantData.map((restaurant, index) => (
-                <View key={index} {...restaurant}>
+            {sortedRestaurants.map((restaurant, index) => (
+                <TouchableOpacity key={index} onPress={() => handleRestaurantPress(restaurant)}>
                     <View style={styles.cardContainer}>
                         <Image source={{ uri: restaurant.image }} style={styles.restaurantImage} resizeMode="cover" />
                         <View style={styles.infoContainer}>
@@ -79,7 +148,7 @@ const Screen_02 = ({ navigation }) => {
                                 />
                             </View>
                             <View style={styles.tagsContainer}>
-                                {tags.map((tag, index) => (
+                                {restaurant.tags.map((tag, index) => (
                                     <View key={index} style={styles.tag}>
                                         <Text style={styles.tagText}>{tag}</Text>
                                     </View>
@@ -87,11 +156,11 @@ const Screen_02 = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             ))}
-            <View style={styles.seeAllButton}>
+            <TouchableOpacity style={styles.seeAllButton} onPress={toggleShowAll}>
                 <Text style={styles.seeAllText}>See all</Text>
-            </View>
+            </TouchableOpacity>
             <View style={styles.container1}>
                 <Image
                     source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/8a649270-4f5e-441b-ba23-7f67a77cbdd1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }}
@@ -119,11 +188,11 @@ const Screen_02 = ({ navigation }) => {
                             />
                         </View>
                         <View style={styles.tagsContainer}>
-                            {tags.map((tag, index) => (
-                                <View key={index} style={styles.tag}>
-                                    <Text style={styles.tagText}>Freeship</Text>
-                                </View>
-                            ))}
+
+                            <View style={styles.tag}>
+                                <Text style={styles.tagText}>Freeship</Text>
+                            </View>
+
                         </View>
                     </View>
                 </View>
@@ -170,6 +239,15 @@ const styles = StyleSheet.create({
         color: 'rgba(255, 119, 0, 1)',
         textAlign: 'center',
     },
+
+    selectedTagContainer: {
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: 'rgba(255, 119, 0, 1)',// Màu nền khi được chọn
+    },
+    selectedTagText: {
+        color: 'rgba(255, 119, 0, 1)',// Màu chữ khi được chọn
+    },
     headerContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -212,6 +290,10 @@ const styles = StyleSheet.create({
         width: 16,
         height: 16,
         marginLeft: 3,
+    },
+    picker: {
+        width: 150,
+        height: 50,
     },
     cardContainer: {
         flexDirection: 'row',

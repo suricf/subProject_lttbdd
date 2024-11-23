@@ -1,8 +1,8 @@
 
 import { View, StyleSheet, Image, Text, ScrollView, TextInput, TouchableOpacity, FlatList, CheckBox } from 'react-native';
-import React from 'react'
-
-
+import React, { useContext, useState, useEffect } from 'react'
+import { AuthContext } from './AuthContext';
+import axios from 'axios';
 const CategoryItem = ({ name, image }) => (
     <View style={styles.categoryItem}>
         {image ? (
@@ -13,11 +13,13 @@ const CategoryItem = ({ name, image }) => (
         <Text style={styles.categoryName}>{name}</Text>
     </View>
 );
-const CollectionItem = ({ name, image }) => (
-    <View style={styles.collectionItem}>
+const CollectionItem = ({ name, image, onPress }) => (
+    <TouchableOpacity onPress={onPress} style={styles.collectionItem}>
+
         <Image source={{ uri: image }} style={styles.collectionImage} resizeMode="contain" />
         <Text style={styles.collectionName}>{name}</Text>
-    </View>
+
+    </TouchableOpacity>
 );
 const RecommendedItem = ({ item }) => (
     <View style={styles.recommendedItem}>
@@ -36,7 +38,7 @@ const RecommendedItem = ({ item }) => (
                         <Text style={styles.tagText}>{tag}</Text>
                     </View>
                 ))}
-                <CheckBox></CheckBox>
+
             </View>
         )}
     </View>
@@ -51,71 +53,34 @@ const SaleItem = ({ item }) => (
             <Image source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/780c1aee710aa1c231fecd14abb3b4ea40c976c122519149851ea9813547f6ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' }} style={styles.ratingIcon} resizeMode="contain" />
             <Text style={styles.itemRating}>{item.rating}</Text>
         </View>
-        <View style={styles.tag}>
-            <Text style={styles.tagText}>{item.tag}</Text>
-        </View>
+        {item.tags.length > 0 && (
+            <View style={styles.tagContainer}>
+                {item.tags.map((tag, index) => (
+                    <View key={index} style={styles.tag}>
+                        <Text style={styles.tagText}>{tag}</Text>
+                    </View>
+                ))}
+
+            </View>
+        )}
     </View>
 );
-const recommendedItems = [
-    {
-        name: 'Bamsu Restaurant',
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/0604637a9709cffcf4d5886d9b7c5b53cc44f55d4ee9876cb058824f5b790339?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '20 mins',
-        rating: 4.1,
-        tags: [],
-    },
-    {
-        name: "B'Fresh Coffee",
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e294e21c63c09c94e5a86e2a449830fb78a99fd2c5e535857166a814eb8e9724?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '30 mins',
-        rating: 4.5,
-        tags: ['Freeship', 'Near you'],
-    },
-    {
-        name: 'Loran Seafood',
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/588f617760d5e2de4d98dfe83f8df3b856aaad569750e2709a507914f9972f28?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '30 mins',
-        rating: 4.3,
-        tags: ['Deal $1', 'Freeship'],
-    },
-];
+
 const categories = [
     { name: 'Rice', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/2d703365741d55faf67baa213173b790639e0d700f1d5e674dcf35b45b6eac1e?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
     { name: 'Healthy', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/f4d4efad1da1acc5a52b0adbc1e42a6d2b70390cd547b43f81dd6f3763533e98?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
     { name: 'Drink', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/72ac6503aba0d884c32f85c33890c77290357d4755f2ba1607301ad9f3373416?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
-    { name: 'Fastfood', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/bb12bb31bdb03955e70969f2e2d5627942d8cd34f22b1077b9ac7ef64776f1db?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
+    { name: 'Fast Food', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/bb12bb31bdb03955e70969f2e2d5627942d8cd34f22b1077b9ac7ef64776f1db?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
     { name: 'Snacks', image: '' },
 ];
 const collections = [
-    { name: 'FREESHIP', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/115a02cfe682a7b57a9c40ad20f20acc9a2cb2e407a755bf5656b8592bc650d9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
-    { name: 'DEAL $1', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/f695f4092290dfdbde312a8d94c6231a99b35a8af73a15805f05863821603143?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
-    { name: 'NEAR YOU', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/4313fd2293d4cbeab7a859309a93fba49282aa2cef0ec8e2f2d00ea7d732790d?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
-    { name: 'POPULAR', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/b390c6a55bdf39f60c448889594c9479179806fc37029807ab032c734a0508af?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
+    { name: 'Freeship', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/115a02cfe682a7b57a9c40ad20f20acc9a2cb2e407a755bf5656b8592bc650d9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
+    { name: 'Deal $1', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/f695f4092290dfdbde312a8d94c6231a99b35a8af73a15805f05863821603143?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
+    { name: 'Near you', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/4313fd2293d4cbeab7a859309a93fba49282aa2cef0ec8e2f2d00ea7d732790d?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
+    { name: 'Popular', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/b390c6a55bdf39f60c448889594c9479179806fc37029807ab032c734a0508af?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63' },
 ];
-const saleItems = [
-    {
-        name: 'Laura Green',
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e870013a61528cb9b4006011ad3b7dacb2801750364ec217b5c1ed21dee9b511?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '30 mins',
-        rating: 4.2,
-        tag: 'Deal $1',
-    },
-    {
-        name: 'Little Milk',
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/0bc285ccf278abbb6772fd15ad02af7358d77ab1121613f900b6539002052062?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '15 mins',
-        rating: 4.8,
-        tag: 'Freeship',
-    },
-    {
-        name: "Pasta E'moize",
-        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/3a2b178ab96d0ab59153238951eb07f340629c816b8e6cea10630566404a684d?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
-        time: '30 mins',
-        rating: 4.5,
-        tag: 'Deal $1',
-    },
 
-];
+
 const tabIcons = [
     'https://cdn.builder.io/api/v1/image/assets/TEMP/21fe1473-cdef-45df-b4dd-5f6bd5d41e70?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
     'https://cdn.builder.io/api/v1/image/assets/TEMP/3ed1d9f7-5a3b-4f53-8065-9f4cda50ab6e?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
@@ -124,6 +89,39 @@ const tabIcons = [
     'https://cdn.builder.io/api/v1/image/assets/TEMP/69779f34-6ba2-4cac-8924-a4332915ee6e?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63',
 ];
 const Screen_01 = ({ navigation }) => {
+    const [stores, setStores] = useState([]);
+    const [selectedCollection, setSelectedCollection] = useState(null);
+    const [isViewAllRecommended, setIsViewAllRecommended] = useState(false);
+    const [isViewAllSale, setIsViewAllSale] = useState(false);
+
+    const toggleViewRecommended = () => {
+        setIsViewAllRecommended(!isViewAllRecommended);
+    };
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/restaurants')
+            .then(response => {
+                setStores(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching restaurants:', error);
+            });
+    }, []);
+
+    const toggleViewSale = () => {
+        setIsViewAllSale(!isViewAllSale);
+    };
+
+    const filteredItems = selectedCollection
+        ? stores.filter(store => store.tags.includes(selectedCollection))
+        : stores;
+
+    const recommendedFilteredItems = filteredItems.filter(item => item.recommend);
+    const saleFilteredItems = filteredItems.filter(item => !item.recommend);
+    const { user } = useContext(AuthContext);
+    const handleCategoryPress = (categoryName) => {
+        navigation.navigate('Screen_02', { categoryName });
+    };
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -154,7 +152,9 @@ const Screen_01 = ({ navigation }) => {
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryList}>
                     {categories.map((category, index) => (
-                        <CategoryItem key={index} name={category.name} image={category.image} />
+                        <TouchableOpacity key={index} onPress={() => handleCategoryPress(category.name)}>
+                            <CategoryItem name={category.name} image={category.image} />
+                        </TouchableOpacity>
                     ))}
                 </ScrollView>
                 <TouchableOpacity style={styles.voucherBanner}>
@@ -176,46 +176,50 @@ const Screen_01 = ({ navigation }) => {
                     <Text style={styles.sectionTitle}>Collections</Text>
                     <View style={styles.collectionGrid}>
                         {collections.map((collection, index) => (
-                            <CollectionItem key={index} name={collection.name} image={collection.image} />
+                            <CollectionItem key={index} name={collection.name} image={collection.image} onPress={() => setSelectedCollection(selectedCollection === collection.name ? null : collection.name)} />
                         ))}
                     </View>
                 </View>
                 <View style={styles.recommendedSection}>
                     <View style={styles.sectionHeader}>
                         <Text style={styles.sectionTitle}>Recommended for you</Text>
-                        <TouchableOpacity>
-                            <Text style={styles.viewAllText}>View all</Text>
+                        <TouchableOpacity onPress={toggleViewRecommended}>
+                            <Text style={styles.viewAllText}>{isViewAllRecommended ? 'View Less' : 'View All'}</Text>
                         </TouchableOpacity>
                     </View>
                     <FlatList
-                        data={recommendedItems}
+                        data={recommendedFilteredItems}
                         renderItem={({ item }) => <RecommendedItem item={item} />}
                         keyExtractor={(item, index) => index.toString()}
-                        horizontal
-                        showsHorizontalScrollIndicator={true}
+                        horizontal={!isViewAllRecommended}
+                        showsHorizontalScrollIndicator={!isViewAllRecommended}
                         contentContainerStyle={styles.recommendedList}
+                        key={isViewAllRecommended ? 'h' : 'v'}
+                        {...(isViewAllRecommended ? { numColumns: 2 } : {})}
                     />
                 </View>
                 <View style={styles.saleSection}>
                     <View style={styles.sectionHeader}>
                         <Text style={styles.sectionTitle}>Sale up to 50%</Text>
-                        <TouchableOpacity>
-                            <Text style={styles.viewAllText}>View all</Text>
+                        <TouchableOpacity onPress={toggleViewSale}>
+                            <Text style={styles.viewAllText}>{isViewAllSale ? 'View Less' : 'View All'}</Text>
                         </TouchableOpacity>
                     </View>
                     <FlatList
-                        data={saleItems}
+                        data={saleFilteredItems}
                         renderItem={({ item }) => <SaleItem item={item} />}
                         keyExtractor={(item, index) => index.toString()}
-                        horizontal
-                        showsHorizontalScrollIndicator={true}
+                        horizontal={!isViewAllSale}
+                        showsHorizontalScrollIndicator={!isViewAllSale}
                         contentContainerStyle={styles.saleList}
+                        key={isViewAllSale ? 'h' : 'v'}
+                        {...(isViewAllSale ? { numColumns: 2 } : {})}
                     />
                 </View>
             </ScrollView>
             <View style={styles.tabBar}>
                 {tabIcons.map((icon, index) => (
-                    <TouchableOpacity key={index} style={styles.tabItem} onPress={() => { navigation.navigate("Screen_02") }}>
+                    <TouchableOpacity key={index} style={styles.tabItem}>
                         <Image source={{ uri: icon }} style={styles.tabIcon} resizeMode="contain" />
                     </TouchableOpacity>
                 ))}

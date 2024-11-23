@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Image, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-
-const FoodDetails = () => {
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from './AuthContext';
+const FoodDetails = ({ route, navigation }) => {
     const [size, setSize] = useState('S');
     const [toppings, setToppings] = useState([]);
     const [spiciness, setSpiciness] = useState('No');
     const [quantity, setQuantity] = useState(1);
     const [note, setNote] = useState('');
 
-    const basePrice = 15;
+    const { user } = useContext(AuthContext);
     const sizePrices = { S: 0, M: 5, L: 10 };
     const toppingPrices = { Corn: 2, 'Cheese Cheddar': 5, 'Salted egg': 10 };
-
+    const { item } = route.params;
     const calculateTotalPrice = () => {
         const sizePrice = sizePrices[size];
+        const basePrice = parseFloat(item.price);
         const toppingPrice = toppings.reduce((sum, topping) => sum + toppingPrices[topping], 0);
+
         return (basePrice + sizePrice + toppingPrice) * quantity;
     };
+
+
+
 
     const toggleTopping = (topping) => {
         setToppings(prevToppings =>
@@ -44,12 +50,48 @@ const FoodDetails = () => {
         </TouchableOpacity>
     );
 
-
+    const handleAddToCart = async () => {
+        const temporaryAddress = await AsyncStorage.getItem('temporaryAddress');
+        if ((!user.address || user.address.length === 0) && !temporaryAddress) {
+            navigation.navigate('CheckoutSelectLocation');
+            return;
+        }
+        const orderItem = {
+            ...item,
+            size,
+            quantity,
+            toppings,
+            spiciness,
+            note,
+            price: calculateTotalPrice() / quantity,
+            totalPrice: calculateTotalPrice()
+        };
+        try {
+            const existingCart = await AsyncStorage.getItem('cart');
+            const cart = existingCart ? JSON.parse(existingCart) : [];
+            const existingItemIndex = cart.findIndex(cartItem =>
+                cartItem.id === orderItem.id &&
+                cartItem.size === orderItem.size &&
+                JSON.stringify(cartItem.toppings) === JSON.stringify(orderItem.toppings) &&
+                cartItem.spiceLevel === orderItem.spiceLevel
+            );
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += orderItem.quantity;
+                cart[existingItemIndex].totalPrice = (parseFloat(cart[existingItemIndex].totalPrice) + parseFloat(orderItem.totalPrice)).toFixed(2);
+            } else {
+                cart.push(orderItem);
+            }
+            await AsyncStorage.setItem('cart', JSON.stringify(cart));
+            navigation.navigate('OrderReview');
+        } catch (error) {
+            console.error('Error saving cart:', error);
+        }
+    };
 
     return (
         <ScrollView style={styles.container}>
             <View style={styles.header}>
-                <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/b1208389eef84c0d16a287385b9c71f59ecf8dbb9796e95202b65f54127a752a?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.headerImage} resizeMode="cover" />
+                <Image source={{ uri: item.image }} style={styles.headerImage} resizeMode="cover" />
                 <TouchableOpacity style={styles.backButton} accessibilityLabel="Go back">
                     <Image source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/20083ffa5b2467345a2dd3ba30a44b076ed3c523d66f1fc2af73d65a0d5020b5?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63" }} style={styles.backIcon} resizeMode="contain" />
                 </TouchableOpacity>
@@ -57,11 +99,11 @@ const FoodDetails = () => {
             <View style={styles.contentContainer}>
                 <View style={styles.titlePriceContainer}>
                     <View>
-                        <Text style={styles.title}>Fried Chicken</Text>
-                        <Text style={styles.subtitle}>Crispy fried wings, thigh</Text>
+                        <Text style={styles.title}>{item.name}</Text>
+                        <Text style={styles.subtitle}>{item.description}</Text>
                     </View>
                     <View>
-                        <Text style={styles.price}>${basePrice}</Text>
+                        <Text style={styles.price}>${item.price}</Text>
                         <Text style={styles.priceSubtext}>Base price</Text>
                     </View>
                 </View>
@@ -148,7 +190,8 @@ const FoodDetails = () => {
                 </View>
                 <TouchableOpacity
                     style={styles.addToCartButton}
-                    onPress={() => { }}
+                    onPress={handleAddToCart}
+
                     accessibilityLabel={`Add to cart, total price $${calculateTotalPrice()}`}
                 >
                     <Text style={styles.addToCartText}>Add to cart (${calculateTotalPrice()})</Text>

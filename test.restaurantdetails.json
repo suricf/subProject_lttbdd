@@ -1,0 +1,1008 @@
+[{
+  "_id": {
+    "$oid": "6741738cffefac564c273fd8"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fd9"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fda"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fdb"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fdc"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fdd"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fde"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "6741738cffefac564c273fdf"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc9"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fe6"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fe7"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fe8"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "$25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fe9"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fea"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273feb"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fec"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d01ffefac564c273fed"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fcf"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff1"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff2"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff3"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff4"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff5"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff6"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff7"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d49ffefac564c273ff8"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc7"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c273ffd"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "$15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c273ffe"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c273fff"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c274000"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c274001"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c274002"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c274003"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417d77ffefac564c274004"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fc8"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c274008"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "$15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c274009"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400a"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400b"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400c"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400d"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400e"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fceffefac564c27400f"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fca"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274011"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274012"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274013"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274014"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274015"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274016"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274017"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67417fe3ffefac564c274018"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d1a0ffefac564c273fcb"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c27401c"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c27401d"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c27401e"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c27401f"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c274020"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c274021"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c274022"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418012ffefac564c274023"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd0"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c274027"
+  },
+  "id": "1",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/e1f72e18c7c1497913a962583a4ea2a01e696cbdfafa12f45995a06c1181dfc9?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Sauté Chicken Rice",
+  "description": "Sauté chicken, Rice",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c274028"
+  },
+  "id": "2",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/9a8e12e8f63b7086f623aa8d3f3b520878eeaf3d02c3f2e773eea26696b1b2ed?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Burger",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "For You",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c274029"
+  },
+  "id": "3",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/0f1fcfb492a32d62e5ad6257a9197cfaf955ea883a87eb0f411a9f7a9e1e7247?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken, Chicken Rice & Salad",
+  "price": "25",
+  "rating": "4.5",
+  "reviews": "90",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c27402a"
+  },
+  "id": "4",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/5a6c8cab625eeecce4aaab53bb9e1f06fd47884abc114bab5ce559e1cbef47d1?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Combo B",
+  "description": "Fried Chicken (Small) & Potatos",
+  "price": "19",
+  "rating": "4.6",
+  "reviews": "75",
+  "category": "Combo",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c27402b"
+  },
+  "id": "5",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/f67bd8b7c0157c6f1edfaa236039030323daa2e16f7ff9c45ce6b666bf40fc96?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Chicken",
+  "description": "Fried chicken, Cheese & Burger",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c27402c"
+  },
+  "id": "6",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2db1749bc1563feb7065caf1a400c3ac5f57df598505d90a235ca9ad89e9b880?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Chicken Salad",
+  "description": "Chicken, Salad",
+  "price": "15",
+  "rating": "4.5",
+  "reviews": "99",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c27402d"
+  },
+  "id": "7",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/89bfa0023ec443813338f156d98fc21446963dbf898af0f79bf36e823e0a84c3?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Spicy Chicken",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67418031ffefac564c27402e"
+  },
+  "id": "8",
+  "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/2df0bd13773166556e268c94a831498a5252824e10bde17e8dd90cee28fd79cc?placeholderIfAbsent=true&apiKey=aa16a4caa833425da6acc935c73d7b63",
+  "name": "Fried Potatos",
+  "rating": "4.5",
+  "reviews": "99",
+  "price": "15",
+  "category": "Menu",
+  "restaurantId": {
+    "$oid": "6740d3f6ffefac564c273fd1"
+  }
+}]
